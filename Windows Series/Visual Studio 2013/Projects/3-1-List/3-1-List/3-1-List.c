@@ -1,10 +1,6 @@
 
 #include "stdio.h"    
 
-#include "stdlib.h"   
-#include "io.h"  
-#include "math.h"  
-#include "time.h"
 
 #define OK 1
 #define ERROR 0
@@ -101,8 +97,8 @@ Status ListInsert(SqList *L, int i, ElemType e)
 
 	if (i <= L->length)        /* 若插入数据位置不在表尾 */
 	{
-		for (k = L->length - 1; k >= i - 1; k--)  /* 将要插入位置之后的数据元素向后移动一位 */
-			L->data[k + 1] = L->data[k];
+		for (k = L->length-1; k >= i-1; k--)  /* 将要插入位置之后的数据元素向后移动一位, 循环的次数等于(length - 1)  -> (i -1) , 转换成数组-1模式，当然length -> i好理解但，后面移位就不好理解 */
+			L->data[k + 1] = L->data[k];  /* 核心公式 */
 	}
 	L->data[i - 1] = e;          /* 将新元素插入 */
 	L->length++;
