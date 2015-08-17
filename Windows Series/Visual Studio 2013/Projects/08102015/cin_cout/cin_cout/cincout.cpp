@@ -1,44 +1,20 @@
-/**************************************************************/
-/*  知识点： bool类型 命名空间 输入输出                       */
-/*  题目要求：                                                */
-/*      使用一个函数找出一个整形数组中的最大值或者最小值。    */
-/**************************************************************/
-#include <iostream>
-#include <stdlib.h>
+#include <stdio.h>
 
-using namespace std;
-
-namespace CompA
+void fun()
 {
-	int getMaxOrMin(int *arr, int count, bool isMax)
-	{
-		int temp = arr[0];
-
-		for (int i = 1; i < count; i++)
-		{
-			if (isMax)
-				if (temp < arr[i])
-					temp = arr[i];
-			else
-				if (temp > arr[i])
-					temp = arr[i];
-		}
-
-		return temp;
-	}
-
+	int i = 1;
+	static int j = 1;
+	i = i + 1;
+	j = j + 1;
+	printf("i = %d, j = %d\n", i, j);
 }
-
-
-int main(void)
+int main()
 {
-	int arr1[4] = { 3, 5, 1, 7 };
-	bool isMax = false;
-
-	cin >> isMax;
-
-	cout << CompA::getMaxOrMin(arr1, 4, isMax) << endl;
-
-	system("pause");
+	int i;
+	for (i = 0; i<3; i++)
+	{
+		fun();
+	}
 	return 0;
+
 }
